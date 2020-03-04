@@ -5,7 +5,6 @@ class Game{
         this.characterArray = [["C3PO", 50, 1, 4], ["R2D2", 25, 3, 4], ["BB8", 15, 5, 10]];
         this.round = 0;
         this.victories = 0;
-        this.targetSelected = false;
         this.myCharacter;
         this.target;
         this.setUpCharacterSelect();
@@ -28,7 +27,7 @@ class Game{
     imgClickDefiner(input){
         if(!this.myCharacter){
             this.assignCharacterToPlayer(input);
-        } else if(this.targetSelected!=true){
+        } else if(!this.target){
             this.assignCharacterToTarget(input);
             $("#report").text("");
         } else {
@@ -52,12 +51,11 @@ class Game{
     assignCharacterToTarget(input){
         $("#"+input.id).remove();
         this.target = this.characterArray[input.attributes.value.value];
-        this.targetSelected=true;
         this.updateTarget();
     }
 
     updateTarget(){
-        if(this.targetSelected==true){
+        if(this.target){
             var targetHTML = '<img src="assets/images/'+this.target[0]+'.jpg" />'
             targetHTML += '<div style="text-align: center"><h1>Health: '+this.target[1]+'</h1>';
             targetHTML += '<button onclick="battle()">Attack!</button></div>'
@@ -72,7 +70,6 @@ class Game{
         this.target[1] -= this.round * this.myCharacter[2];
         if(this.target[1]<=0){
             this.target="";
-            this.targetSelected=false;
             this.victories++;
             this.checkForWin();
         } else {
