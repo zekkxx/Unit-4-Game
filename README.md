@@ -1,28 +1,19 @@
-# Unit-4-Game
-A new game project designed for utilization of jQuery.
+# Basic Game
+A new game project designed with utilization of jQuery.
 
-2-Options:
-Crystal Collector Game: https://youtu.be/yNI0l2FMeCk
-4 Crystals - each has randomly assigned value (assigned at beginning of game)
-  Value between 1 and 12
-The Goal is to reach the specified number randomly generated at the beginning of the game
-  Value between 19-120
-This game should show a win/lose ratio indicitave of total rounds played.
+## Explanation:
+This game is a very basic version of a Star Wars themed adventure game. The intention behind this game was simply to manipulate elements by utilizing jQuery. As such, the primary challenge from this game was to balance each character type so that each character was viable to win the game with.
 
-"Star Wars" RPG Game: https://youtu.be/klN2-ITjRt8
-At Game Start - Player chooses a fighter, all other fighters become enemy combatants
-  Player selects an opponent who is moved to a "defender area"
-  Player "attacks" and enemy counter attacks dealing damage to each targets HP
-  Characters have - HP, Atk, and Counter Atk
-    Character uses Atk value which multiplies by turn #
-      That value is retained between combats
-    Enemy uses Counter Atk which never changes
-   ALL CHARACTERS SHOULD BE VIABLE (balancing act) and capable of losing
-   
-# Analysis
-Crystal Collector game is all based on randomization and experimentation. If the buttons are all closer to 12 and the value is closer to 19 the game will be nearly impossible. As such, it might be an interesting challenge to make sure that there IS a solution to EVERY challenge that comes along.
+## Playing the game:
+* Load up the browser and select one of the droids displayed on the screen to play.
+* Selecting another droid to fight and attack until either your or your enemy is defeated.
+* Continue until either you have been defeated, or all enemies have been destroyed.
 
-Star Wars RPG game will be more of a balancing act. With health being a limited resource the important point is to find the person with the lowest Counter-Attack, and striking at them first. This is going to take more time in my opinion to make suitable fighters and balance them than to actually program.
+## Design Notes:
+All characters are actually viable in this game. The mechanics work such that each droid has an inherent HP, Player Attack, and AI Attack value. Each round the Player Attack value will grow by it's base amount, but the AI Attack value will remain the same. As such, the tradeoff between the three droids is as such:
 
-#Choice
-I went with the Star Wars RPG game.
+`this.characterArray = [["C3PO", 50, 1, 4], ["R2D2", 25, 3, 4], ["BB8", 15, 5, 10]];`
+
+This way, the balancing only needs to really take place on the idea of how many turns it should take to complete the game if properly run through. You can see the logic I wrote to ensure that this was viable for each character in `swRPG1.js`. This was thrown together quickly and without care for efficiency, but it worked really well.
+
+//Include a reference from swRPG to finish this ReadMe
