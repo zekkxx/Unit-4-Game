@@ -58,7 +58,7 @@ class Game{
         if(this.target){
             var targetHTML = '<img src="assets/images/'+this.target[0]+'.jpg" />'
             targetHTML += '<div style="text-align: center"><h1>Health: '+this.target[1]+'</h1>';
-            targetHTML += '<button onclick="battle()">Attack!</button></div>'
+            targetHTML += '<button onclick="myGame.fight()">Attack!</button></div>'
             $(".target").html(targetHTML);
         } else {
             $(".target").html("");
@@ -114,8 +114,4 @@ function startNewGame(){
     $(".charImg").on("click", function(){
         myGame.imgClickDefiner(event.target);
     })
-}
-
-function battle(){
-    myGame.fight();
 }
