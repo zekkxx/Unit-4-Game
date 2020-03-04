@@ -19,7 +19,7 @@ class Game{
                 +this.characterArray[i][0]
                 +'.jpg" value="'+i+'" />' //With a value of the index in array
         }
-        $(".characters").html(charImgString+'<div id="report"></div>');
+        $(".field").html(charImgString+'<div id="report"></div>');
         this.updateTargetHTML();
     }
 

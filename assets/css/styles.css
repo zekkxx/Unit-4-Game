@@ -19,7 +19,7 @@ img{
     width: 200px;
     height: 200px;
 }
-.player, .target, .characters{
+.player, .target, .field{
     color: white;
     display: flex;
     flex-flow: row wrap;
