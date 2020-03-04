@@ -3,15 +3,14 @@ var myGame;
 class Game{
     constructor(){
         this.characterArray = [["C3PO", 50, 1, 4], ["R2D2", 25, 3, 4], ["BB8", 15, 5, 10]];
-        this.round = 0;
         this.victories = 0;
         this.myCharacter;
         this.target;
-        this.setUpCharacterSelect();
+        this.setUpScreen();
     }
 
-    setUpCharacterSelect(){ //A function to return the index.html page to starting conditions
-        $(".header").html("<h2>Character Select</h2>"); //Resets Header page
+    setUpScreen(){ //A function to return the index.html page to starting conditions
+        this.updatePlayerHTML();
         var charImgString = "";
         for(var i = 0; i<this.characterArray.length; i++){ //Sets up an img using the following criteria
             charImgString+='<img class="charImg" id="' //img of class charImg
@@ -21,7 +20,7 @@ class Game{
                 +'.jpg" value="'+i+'" />' //With a value of the index in array
         }
         $(".characters").html(charImgString+'<div id="report"></div>');
-        $(".target").html("");
+        this.updateTargetHTML();
     }
 
     imgClickDefiner(input){
@@ -31,20 +30,26 @@ class Game{
             this.assignCharacterToTarget(input);
             $("#report").text("");
         } else {
-            alert("Your foe has already been chosen.")
+            alert("You have already chosen your opponent.")
         }
     }
 
     assignCharacterToPlayer(input){
         $("#"+input.id).remove();
         this.myCharacter = this.characterArray[input.attributes.value.value];
+        this.myCharacter[3] = 0;
         this.updatePlayerHTML();
     }
 
     updatePlayerHTML(){
-        var playerHTML = '<div><img src="assets/images/'+this.myCharacter[0]+'.jpg" />'
-        playerHTML += '<h1>Player Health: '+this.myCharacter[1]+'</h1></div>';
-        $(".header").html(playerHTML);
+        if(this.myCharacter){
+            $(".header").html(
+                '<div><img src="assets/images/'+this.myCharacter[0]+'.jpg" />' +
+                '<h1>Player Health: '+this.myCharacter[1]+'</h1></div>'
+            );
+        } else {
+            $(".header").html("<h2>Character Select</h2>");
+        }
     }
 
     assignCharacterToTarget(input){
@@ -65,8 +70,8 @@ class Game{
     }
 
     fight(){
-        this.round++;
-        this.target[1] -= this.round * this.myCharacter[2];
+        this.myCharacter[3] += this.myCharacter[2];
+        this.target[1] -= this.myCharacter[3];
         if(this.target[1]<=0){
             this.target="";
             this.victories++;
@@ -99,7 +104,7 @@ class Game{
             startNewGame();
         } else {
             this.fullUpdate();
-            $("#report").text("You dealt "+this.round*this.myCharacter[2]+" damage! And you received "+this.target[3]+" damage!")
+            $("#report").text("You dealt "+this.myCharacter[3]+" damage! And you received "+this.target[3]+" damage!")
         }
     }
 }
