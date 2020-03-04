@@ -6,10 +6,10 @@ class Game{
         this.victories = 0;
         this.myCharacter;
         this.target;
-        this.setUpScreen();
+        this.updateScreen();
     }
 
-    setUpScreen(){ //A function to return the index.html page to starting conditions
+    updateScreen(){ //A function to return the index.html page to starting conditions
         this.updatePlayerHTML();
         var charImgString = "";
         for(var i = 0; i<this.characterArray.length; i++){ //Sets up an img using the following criteria
@@ -43,12 +43,12 @@ class Game{
 
     updatePlayerHTML(){
         if(this.myCharacter){
-            $(".header").html(
+            $(".player").html(
                 '<div><img src="assets/images/'+this.myCharacter[0]+'.jpg" />' +
                 '<h1>Player Health: '+this.myCharacter[1]+'</h1></div>'
             );
         } else {
-            $(".header").html("<h2>Character Select</h2>");
+            $(".player").html("<h2>Character Select</h2>");
         }
     }
 
