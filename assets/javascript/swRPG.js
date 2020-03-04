@@ -31,30 +31,29 @@ class Game{
             this.assignCharacterToTarget(input);
             $("#report").text("");
         } else {
-            alert("Target already chosen.")
+            alert("Your foe has already been chosen.")
         }
     }
 
     assignCharacterToPlayer(input){
         $("#"+input.id).remove();
         this.myCharacter = this.characterArray[input.attributes.value.value];
-        this.updatePlayer();
+        this.updatePlayerHTML();
     }
 
-    updatePlayer(){
-        var playerHTML = '<img src="assets/images/'+this.myCharacter[0]+'.jpg" />'
-        playerHTML += '<div><h1>Player:';
-        playerHTML += '<h1>Health: '+this.myCharacter[1]+'</h1></div>';
+    updatePlayerHTML(){
+        var playerHTML = '<div><img src="assets/images/'+this.myCharacter[0]+'.jpg" />'
+        playerHTML += '<h1>Player Health: '+this.myCharacter[1]+'</h1></div>';
         $(".header").html(playerHTML);
     }
 
     assignCharacterToTarget(input){
         $("#"+input.id).remove();
         this.target = this.characterArray[input.attributes.value.value];
-        this.updateTarget();
+        this.updateTargetHTML();
     }
 
-    updateTarget(){
+    updateTargetHTML(){
         if(this.target){
             var targetHTML = '<img src="assets/images/'+this.target[0]+'.jpg" />'
             targetHTML += '<div style="text-align: center"><h1>Health: '+this.target[1]+'</h1>';
@@ -79,8 +78,8 @@ class Game{
     }
 
     fullUpdate(){
-        this.updatePlayer();
-        this.updateTarget();
+        this.updatePlayerHTML();
+        this.updateTargetHTML();
     }
 
     checkForWin(){
