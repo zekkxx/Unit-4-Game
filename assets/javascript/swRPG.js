@@ -2,10 +2,9 @@ var myGame;
 
 class Game{
     constructor(){
-        this.characterArray = [["C3PO", 50, 1, 4], ["R2D2", 25, 3, 4], ["BB8", 15, 5, 10]];;
+        this.characterArray = [["C3PO", 50, 1, 4], ["R2D2", 25, 3, 4], ["BB8", 15, 5, 10]];
         this.round = 0;
         this.victories = 0;
-        this.characterSelected = false;
         this.targetSelected = false;
         this.myCharacter;
         this.target;
@@ -27,7 +26,7 @@ class Game{
     }
 
     imgClickDefiner(input){
-        if(this.characterSelected!=true){
+        if(!this.myCharacter){
             this.assignCharacterToPlayer(input);
         } else if(this.targetSelected!=true){
             this.assignCharacterToTarget(input);
@@ -35,14 +34,11 @@ class Game{
         } else {
             alert("Target already chosen.")
         }
-        //console.log(input.attributes.value.value);
-        //console.log(input.id);
     }
 
     assignCharacterToPlayer(input){
         $("#"+input.id).remove();
         this.myCharacter = this.characterArray[input.attributes.value.value];
-        this.characterSelected=true;
         this.updatePlayer();
     }
 
