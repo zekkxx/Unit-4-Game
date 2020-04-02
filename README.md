@@ -1,5 +1,5 @@
 # Basic Game
-A new game project designed with utilization of jQuery.
+A new game project designed with utilization of jQuery. Available at: https://zekkxx.github.io/basic-game/
 
 ## Explanation:
 This game is a very basic version of a Star Wars themed adventure game. The intention behind this game was simply to manipulate elements by utilizing jQuery. As such, the primary challenge from this game was to balance each character type so that each character was viable to win the game with.
@@ -8,6 +8,10 @@ This game is a very basic version of a Star Wars themed adventure game. The inte
 * Load up the browser and select one of the droids displayed on the screen to play.
 * Selecting another droid to fight and attack until either your or your enemy is defeated.
 * Continue until either you have been defeated, or all enemies have been destroyed.
+
+## Installation Process:
+* Fork Repository, and clone repo to machine.
+* Project can then be edited and run from a code editor.
 
 ## Design Notes:
 All characters are actually viable in this game. The mechanics work such that each droid has an inherent HP, Player Attack, and AI Attack value. Each round the Player Attack value will grow by it's base amount, but the AI Attack value will remain the same. As such, the tradeoff between the three droids is as such:
